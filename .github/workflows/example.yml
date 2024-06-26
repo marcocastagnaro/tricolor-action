@@ -1,0 +1,21 @@
+name: Example Workflow
+
+on: [push]
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run SSH Action
+        uses: ./  # Usa la acción definida en el repositorio actual
+        with:
+          host: ${{ secrets.HOST }}
+          username: 'tomas'
+          key: ${{ secrets.INGSIS_DEV_KEY }}
+          script:
+            echo "Hello, world!"
+            echo "This is a test."
