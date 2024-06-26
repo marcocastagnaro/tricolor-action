@@ -1,0 +1,24 @@
+name: 'SSH Action'
+description: 'This action connects to a VM via SSH and runs specified commands.'
+author: 'Your Name <your.email@example.com>'
+inputs:
+  host:
+    description: 'The SSH host'
+    required: true
+  username:
+    description: 'The SSH username'
+    required: true
+  key:
+    description: 'The SSH private key'
+    required: true
+  port:
+    description: 'The SSH port'
+    required: false
+    default: '22'
+  script:
+    description: 'The script to run on the remote host'
+    required: true
+runs:
+  using: 'docker'
+  image: 'ubuntu:latest'
+  entrypoint: '/entrypoint.sh'
